@@ -16,65 +16,55 @@
 
 </script>
 	
-<title>Tools for planning FECRT studies and analysing the data</title>
+<title>Software tools for planning FECRT studies and analysing FECRT data</title>
 <link href="style.css" rel="stylesheet" type="text/css"/>
 
 </head>
  
 <body style="text-align: left; ">
 	
-	<h1>Tools for planning FECRT studies and analysing the data</h1>
-	<p style="text-align:center">Page last updated by Matthew Denwood on 22nd August 2017</p>
+	<h1>Software tools for planning FECRT studies and analysing FECRT data</h1>
+	<p style="text-align:center">Page last updated by Matthew Denwood on 1st September 2017</p>
 	
 	<h2>OVERVIEW</h2>
 	
-	<p>This is currently a stub and will be expanded before 1st September 2017.</p>
-	
-	<p>If you want to skip the description and go straight to the online tools, then see the links below:</p>
-	
-	<p><a href="https://mdenwood.shinyapps.io/fecrt_power/"><b>power analysis</b></a>:  this is the online tool for calculating the power of a prospective FECRT study (coming soon)</p>
-
-	<p><a href="https://mdenwood.shinyapps.io/fecrt_bnb/"><b>BNB analysis method</b></a>:  this is the online tool for implementing the BNB analysis method for existing FECRT data (coming soon)</p>
+	<p>This website houses the web applications presented at the <a href="http://www.waavp2017kl.org">26th International Conference of the World Association for the Advancement of Veterinary Parasitology</a> on 5th September 2017 in Kuala Lumpur, Malaysia.  The software is primarily intended for use with faecal egg count reduction test (FECRT) data, but are equally applicable to other situations where the ratio of means of two sets of over-dispersed count distributions (which are assumed to be close to Negative Binomial) is to be compared to a given target.</p>
+	<p>For more information about the people behind this work (including contact details), see <a href="about">this page</a>.  The web applications are feature complete but are still being tested, so if you encounter any unusual results please do let us know.  The supporting website itself is still under development.</p>
 	
 	<h2>POWER ANALYSIS</h2>
 
-	<p>Short explanation and instructions.  For more details of the underlying statistics see <a href="power">this page</a>.</p>
+	<p>This web application provides a Monte Carlo approximation of the power associated with a prospective FECRT study for both an inferiority test and a non-inferioirty test of the simulated reduction compared to a given target and non-inferiority margin.  The p-values associated with the two tests at each iteration are obtained using the BNB method (see below).  Estimates of the variability (over-dispersion parameter k) of the Negative Binomial distributions are also required.  Several power calculations can be performed within the same session, and results can be downloaded in comma separated value (CSV) format for examination in Excel (this also provides additional information on e.g. the type 1 error rate associated with the two tests).  For help with parameter values and more details of the underlying statistics see <a href="power">this page</a>.</p>
 	
-	<p><a href="https://mdenwood.shinyapps.io/fecrt_power/"><b>GO TO THE POWER ANALYSIS ONLINE TOOL</b></a> (coming soon)</p>
+	<p><a href="https://mdenwood.shinyapps.io/fecrt_power/"><b>WEB APP FOR POWER ANALYSIS</b></a></p>
 	
 	<h2>BNB METHOD</h2>
 
-	<p>Short explanation and instructions.  For more details of the underlying statistics see <a href="BNB">this page</a>.</p>
+	<p>This web application implements a hybrid Frequentist/Bayesian analysis method for existing FECRT data.  The method is theoretiaclly best justified for unpaired data (with separate treatment and control individuals), but has also been shown to work empirically well enough for paired data (where the same individuals are sampled before and after treatment).  To examine the type 1 error rates for any given set of parameters, use the power analysis tool (above) and click the link to download the results as a CSV file.  For help with data entry and more details of the underlying statistics see <a href="BNB">this page</a>.</p>
 
-	<p><a href="https://mdenwood.shinyapps.io/fecrt_bnb/"><b>GO TO THE BNB METHOD ANALYSIS ONLINE TOOL</b></a> (coming soon)</p>
+	<p><a href="https://mdenwood.shinyapps.io/fecrt_bnb/"><b>WEB APP FOR DATA ANALYSIS</b></a></p>
 	
 	<h2>OTHER LINKS</h2>
 
-	<p>Links to some R code to run power analysis on your own machine rather than using our servers (coming soon).</p>
-	
-	<p>Here are the links to my personal pages at the various institutions with which I am associated:</p>
-	
-	<p><a href="http://research.ku.dk/search/?pure=da%2Fpersons%2Fmatt-denwood(e86ecd1c-385d-49a7-a2ca-45dfc187bc6e)%2Fpublications.html"><b>My page at the University of Copenhagen</b></a></p>
-
-	<p><a href="http://www.gla.ac.uk/research/az/boydorr/people/byname/matthewdenwood/"><b>My page at the Boyd Orr Institute for Population and Ecosystem Health</b></a></p>
-	
-	<p><a href="http://www.bioss.ac.uk/people/matthew.html"><b>My page at Bioinformatics and Statistics Scotland (BioSS)</b></a></p>
-	
-	<p><a href="https://www.prstatistics.com/organiser/dr-matt-denwood/"><b>My page at PR statistics</b></a></p>
-	
-	<p><a href="https://scholar.google.co.uk/citations?user=Zos2XTkAAAAJ"><b>My Google scholar page</b></a></p>
+	<p>This section is still under development, but it is planned to provide R code so that more complex power analysis studies (and repeated data analyses) can be run locally in R rather than remotely on the web apps provided.  If you use R and are interested in obtaining some code to use these tools please <a href="about">contact me</a>.</p>
 	
 	<h2>REFERENCES</h2>
 	
-	<p>A manuscript detailing and justifying the statistical methods used for these tools is currently being prepared for submission.  Once a pre-print is available, a link will be given here.</p>
+	<p>A manuscript detailing the statistical methods used for these tools is currently being prepared for submission.  Once a pre-print is available, a link will be given here.</p>
 
 	<h2>FEEDBACK</h2>
 	
-	<p>This website is currently being developed, and all feedback and criticism are very welcome either to matt _at_ fecrt.com (replace _at_ with @) or via the email address given at my University page <a href="http://research.ku.dk/search/?pure=da%2Fpersons%2Fmatt-denwood(e86ecd1c-385d-49a7-a2ca-45dfc187bc6e)%2Fpublications.html"><b>here</b></a>.  I am particularly interested in datasets for which the analysis method gives implausible results, any errors obtained from the online tools, and enquries about collaboration regarding analysis of more compelx datasets.  I am also happy to let you know when the website is updated if you send me a request to do so.</p>
+	<p>This website is currently being developed, and all feedback and criticism are very welcome (<a href="about">contact details</a>).  I am particularly interested in datasets for which the analysis method gives implausible results, any errors obtained from the online tools, and enquries about collaboration regarding analysis of more compelx datasets.  I am also happy to let you know when the website is updated if you send me a request to do so!</p>
 	
-	<h2>CITATION</h2>
+	<h2>ACKNOWLEDGEMENTS AND CITATION</h2>
 	
-	<p>Citation instructions coming soon.</p>
+	<p>The work behind these web applications has been (slowly) developed starting with <a href="http://theses.gla.ac.uk/1837/">my PhD at the University of Glasgow</a> and continuing after my move to the <a href="http://ivh.ku.dk/english/employees/?pure=en/persons/487288">University of Copenhagen</a>.  I am grateful to all the coauthors that have contributed to this work, as well as the Universities and funding bodies that have financially supported me over the years.</p>
+	<p>As a primarily academic exercise, it is very important to be able to demonstrate that this software is being used in order to be able to continue development.  If you use these tools as part of any published work, please ensure to cite the following conference publication:</p>
+	<p style="font-style: italic; ">Denwood MJ, McKendrick IJ, Matthews L, Prentice JC, Reid SWJ, Innocent GT (2017). A simple and robust statistical framework for planning, analysing and interpreting faecal egg count reduction test (FECRT) studies. In: 26th International Conference of the World Association for the Advancement of Veterinary Parasitology. URL: http://www.fecrt.com</p>
+	<p>[Note that this citation will at some point be updated with a more detailed peer-reviewed publication]</p>
+	
+	<h2>LICENSE AND DISCLAIMER</h2>
+	
+	<p>The software used by this website is open source and freely available under the General Public License (version 2).  All advice contained on this website and given by the linked web applications is provided freely under the same license, and absolutely without any form of warranty or guarantee.</p>
 	
 	<table class="headertable"> 
 		<tr>
