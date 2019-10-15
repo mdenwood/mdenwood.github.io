@@ -16,19 +16,19 @@
 
 </script>
 	
-<title>A hypothesis testing framework for the difference in mean of two negative binomial distributions</title>
+<title>A hypothesis testing framework for the ratio of means of two negative binomial distributions</title>
 <link href="../style.css" rel="stylesheet" type="text/css"/>
 
 </head>
  
 <body style="text-align: left; ">
 	
-	<h1>A hypothesis testing framework for the difference in mean of two negative binomial distributions</h1>
-	<p style="text-align:center">Page last updated by Matthew Denwood on 3rd October 2019</p>
+	<h1>A hypothesis testing framework for the ratio of means of two negative binomial distributions</h1>
+	<p style="text-align:center">Page last updated by Matthew Denwood on 15th October 2019</p>
 	
 	<h2>OVERVIEW</h2>
 	
-	<p>This website accompanies the article "A hypothesis testing framework for the difference in mean of two negative binomial distributions: an application to drug efficacy in helminthiasis" by Denwood et al. that is currently being prepared for submission to peer review.  For the R and C++ code that underlies the methods presented, see the <a href="https://github.com/ku-awdc/bayescount">GitHub repository for the bayescount package for R</a>.  The development version of the R package can also be installed (without the need for C++ compilers) from our Drat repository using the following R code:</p>
+	<p>This website accompanies the article "A hypothesis testing framework for the ratio of means of two negative binomial distributions: classifying the efficacy of anthelmintic treatment against intestinal parasites" by Denwood et al. that is currently under peer review.  For the R and C++ code that underlies the methods presented, see the <a href="https://github.com/ku-awdc/bayescount">GitHub repository for the bayescount package for R</a>.  The development version of the R package can also be installed (without the need for C++ compilers) from our Drat repository using the following R code:</p>
 	<p>install.packages('bayescount', dependencies=TRUE, repos=c(CRAN="https://cran.rstudio.com/", "ku-awdc"="https://ku-awdc.github.io/drat/"))</p>
 	
 	<h2>DATA ANALYSIS</h2>
@@ -37,9 +37,15 @@
 	<p>bayescount::launch_shiny("data_analysis")</p>
 	<p>Alternatively, the same interactive application <a href="https://mdenwood.shinyapps.io/fecrt_bnb/">can be run from a remote server here</a>.</p>
 	
+	<h2>FRAMEWORK</h2>
+
+	<p>This tool allows the user to explore the consequences of using different interpretative frameworks along with the five methods presented in the article in terms of the classification probabilities associated with a dataset simulated with given population parameters.  To launch the application from within R on your computer use:</p>
+	<p>bayescount::launch_shiny("framework")</p>
+	<p>Alternatively, the same interactive application <a href="https://ucphepi.shinyapps.io/waavp_typologies/">can be run from a remote server here</a>.</p>
+	
 	<h2>STUDY PLANNING</h2>
 
-	<p>An interactive application is provided for planning a study based on parameter values provided by the user.  The output is presented in terms of the relative frequency of each typology and resulting classification given a specified sample size.  The primary purpose of this tool is to estimate the necessary sample size for a new study, but the type I and type II error rates are also provided for comparison of each of the five methods of analysis presented in the article.  Options for modifying the classification framework are also provided for interest.  To launch the application from within R on your computer use:</p>
+	<p>An interactive application is provided for planning a study based on parameter values provided by the user.  The output is presented in terms of the relative frequency of each typology and resulting classification given a specified sample size.  The primary purpose of this tool is to estimate the necessary sample size for a new study, but the type I and type II error rates are also provided for comparison of each of the five methods of analysis presented in the article.  Options for modifying the classification framework are also provided.  To launch the application from within R on your computer use:</p>
 	<p>bayescount::launch_shiny("study_planning")</p>
 	<p>Alternatively, the same interactive application <a href="https://mdenwood.shinyapps.io/fecrt_power/">can be run from a remote server here</a>.</p>
 
@@ -58,7 +64,7 @@
 	
 	<table class="headertable"> 
 		<tr>
-			<td style="vertical-align:middle; text-align:left; width:33%">
+			<td style="vertical-align:middle; text-align:left; width:50%">
 				<p about=""
 				     resource="http://www.w3.org/TR/rdfa-syntax"
 				     rel="dc:conformsTo" xmlns:dc="http://purl.org/dc/terms/">
@@ -66,7 +72,7 @@
 				      src="http://www.w3.org/Icons/valid-xhtml-rdfa" alt="Valid XHTML + RDFa" style="border:0;width:60px;height:20px" /></a>
 				</p>		
 			</td>
-			<td style="vertical-align:middle; text-align:left; width:33%">		
+			<td style="vertical-align:middle; text-align:left; width:50%">		
 				<p>
 				    <a target="_blank" href="http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fwww.fecrt.com/framework">
 				        <img style="border:0;width:60px;height:20px"
@@ -74,13 +80,6 @@
 				            alt="Valid CSS!" />
 				    </a>
 				</p>
-			</td>
-			<td style="vertical-align:middle; text-align:left; width:34%">		
-					<script type="text/javascript">
-					//<![CDATA[
-					document.write('<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.fecrt.com%2F&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=dark&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"><\/iframe>');
-					//]]>
-					</script>
 			</td>
 		</tr>
 	</table>
