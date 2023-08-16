@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+
+<head>
+<meta name="google-site-verification" content="9hONQNgRDyVvEWEbXR5IDW6rsfdYuluYPHBpvFgBjzA" />	
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-105088919-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+	
+<title>Software tools for planning FECRT studies and analysing FECRT data</title>
+<link href="style.css" rel="stylesheet" type="text/css"/>
+
+</head>
+ 
+<body style="text-align: left; ">
+	
+	<h1>Software tools for faecal egg count reduction tests</h1>
+	<p style="text-align:center">Page last updated on 11th February 2021</p>
+	
+	<h2>OVERVIEW</h2>
+	
+	<p>This website houses software tools for assessing anthelmintic efficacy based on faecal egg count reduction tests (FECRT) in animals and egg reduction rates (ERR) in humans. To read more about the statistical theory and methods that underpin these tools read the background given further down this page. To jump straight to the online calculators use the links below:</p>
+	
+	<p><a href="https://mdenwood.shinyapps.io/fecrt_bnb/"><b>ONLINE CALCULATOR FOR DATA ANALYSIS</b></a></p>
+	<!--https://ucphepi.shinyapps.io/data_analysis/-->
+		
+	<p>COMING SOON: ONLINE CALCULATOR FOR PROSPECTIVE SAMPLE SIZE CALCULATION</p>
+	<!-- <p><a href="https://mdenwood.shinyapps.io/fecrt_power/"><b>ONLINE CALCULATOR FOR PROSPECTIVE SAMPLE SIZE CALCULATION</b></a></p> -->
+	<!--https://ucphepi.shinyapps.io/study_planning/-->
+	<!--https://ucphepi.shinyapps.io/typologies/-->
+		
+	<p>Please note that the page is currently in development and more background and external links will be added soon. In the meantime, any <a href="about">questions and feedback</a> are extremely welcome!</p>
+
+	<h2>STATISTICAL FRAMEWORK</h2>
+	
+	<p>The core principle that underpins the work shown here is that FECRT can be regarded as two separate hypothesis tests:  a one-sided non-inferioirty test of susceptibility, and a one-sided inferiority test for resistance. For the complete background see "A hypothesis testing framework for the ratio of means of two negative binomial distributions: classifying the efficacy of anthelmintic treatment against intestinal parasites": a pre-peer-reviewed version of the article is available to download from <a href="https://arxiv.org/abs/1910.06667">the arXiv database</a> (see the REFERENCES section below for citation instructions).</p>
+		
+	<h2>DATA ANALYSIS</h2>
+
+	<p>The ultimate goal of a FECRT or ERR is to be able to classify the efficacy as reflecting a population of parasites that are either susceptible or resistant to the anthelmintic compound administered. In order to do this, it is first necessary to determine two quantities: (1) the expected efficay of the anthelmintic and (2) the lower efficacy threshold. The expected efficacy should be based on the first reported efficacy values for the drug in presumed naive populations of parasites, and can typically be used from the literature. The lower efficacy threshold is based on the non-inferiority margin selected for the test of susceptibility, which reflects the lowest efficacy that is considered to be "close enough" to the expected efficacy to eliminate practical concerns about resistance. As this is somewhat difficult to define, we suggest selecting the lower efficacy threshold based on the smallest reduction in efficacy that the FECRT should have sufficient power to detect. Either way, it is important that the lower efficacy threshold be selected before the experiment is planned to ensure that a sufficient sample size is met.</p>
+	
+	<p>Once the expected efficacy and lower efficacy threshold are specified, it is then possible to determine the classification based either on 90% confidence intervals produced by a valid statistical method, or on the result of separate one-sided statistical tests for efficacy and resistance. Note that the use of 90% confidence intervals is advised because this leads to an overall type I error rate of no more than 5% for any given value of true efficacy. Due to differences in statistical methodology underling different ways of calculating confidence intervals, the precise numbers may differ between methods - however if the classification remains the same the overall result can be considered to be trustworthy. The online calculator for data analysis given above performs these calculations for a dataset provided by the user, and is pre-loaded with advised values for expected efficacy and lower efficacy threshold for common applications.</p>
+		
+	<h2>SAMPLE SIZE CALCULATION</h2>
+
+	<p>As with any prospective study, it is important that a proposed FECRT has a sample size that is likely to yield a conclusive result. This means that sample size calculations should be done to determine the necessary sample size before the study is undertaken. The online calculator for prospective sample size calculation above allows this to be done for any proposed FECRT as long as estimates for the required parameters are available for the host and parasite species in question. The calculator is pre-loaded with advised values for pre-treatment variability, post-treatment variability, within-animal correlation for common applications. The method is based on a Monte Carlo approximation of the statistical power associated with the tests for susceptibility and resistance based on sample sizes varying within the range specified by the user.</p>
+
+	<h2>UNDERLYING SOFTWARE</h2>
+
+	<p>For the R and C++ code that underlies the methods presented, see the <a href="https://github.com/ku-awdc/bayescount">GitHub repository for the bayescount package for R</a>.  Pre-compiled versions of the R package can also be installed from our Drat repository using the following R code:</p>
+	<p>install.packages('bayescount', dependencies=TRUE, repos=c(CRAN="https://cran.rstudio.com/", kuawdc="https://ku-awdc.github.io/drat/"))</p>
+	<p>If running the R package locally then a good place to start from is the vignette:</p>
+	<p>vignette("bayescount", package="bayescount")</p>
+	<p>Note that the online calculators can also be run directly from R:</p>
+	<p>bayescount::launch_shiny("data_analysis")</p>
+
+
+	<h2>REFERENCES</h2>
+	
+	<p style="font-style: italic; ">M.J. Denwood, G.T. Innocent, J.C. Prentice, L. Matthews, S.W.J. Reid, C.B. Pipper, B. Levecke, R.M. Kaplan, A.C. Kotze, J. Keiser, M. Palmeirim, and I.J. McKendrick (2019). A hypothesis testing framework for the ratio of means of two negative binomial distributions: classifying the efficacy of anthelmintic treatment against intestinal parasites.  arXiv:1910.06667 [stat.ME].  Retrieved on 2019-10-16, from the arXiv database:  https://arxiv.org/abs/1910.06667</p>
+
+	<p style="font-style: italic; ">Denwood MJ, McKendrick IJ, Matthews L, Prentice JC, Reid SWJ, Innocent GT (2017). A simple and robust statistical framework for planning, analysing and interpreting faecal egg count reduction test (FECRT) studies. In: 26th International Conference of the World Association for the Advancement of Veterinary Parasitology. URL: http://www.fecrt.com</p>
+	
+	<p>A number of further publications are currently in review and will be added here once they become available</p>
+
+
+	<h2>FEEDBACK</h2>
+	
+	<p>This website is currently being developed, and all feedback and criticism are very welcome (<a href="about">contact details</a>).  I am particularly interested in datasets for which the analysis method gives implausible results, any errors obtained from the online tools, and enquries about collaboration regarding analysis of more compelx datasets.  I am also happy to let you know when the website is updated if you send me a request to do so!</p>
+	
+	<h2>ACKNOWLEDGEMENTS AND CITATION</h2>
+	
+	<p>The work behind these web applications has been (slowly) developed starting with <a href="http://theses.gla.ac.uk/1837/">my PhD at the University of Glasgow</a> and continuing after my move to the <a href="http://ivh.ku.dk/english/employees/?pure=en/persons/487288">University of Copenhagen</a>.  I am grateful to all the coauthors that have contributed to this work, as well as the Universities and funding bodies that have financially supported me over the years.</p>
+	<p>As a primarily academic exercise, it is very important to be able to demonstrate that this software is being used in order to be able to continue development.  If you use these tools as part of any published work, please ensure to use the appropriate citation(s) for the references given above.</p>
+	
+	<h2>LICENSE AND DISCLAIMER</h2>
+	
+	<p>The software used by this website is open source and freely available under the General Public License.  All advice contained on this website and given by the linked web applications is provided freely under the same license, and absolutely without any form of warranty or guarantee.</p>
+	
+	<table class="headertable"> 
+		<tr>
+			<td style="vertical-align:middle; text-align:left; width:33%">
+				<p about=""
+				     resource="http://www.w3.org/TR/rdfa-syntax"
+				     rel="dc:conformsTo" xmlns:dc="http://purl.org/dc/terms/">
+				    <a target="_blank" href="http://validator.w3.org/check?uri=http%3A%2F%2Fwww.fecrt.com"><img
+				      src="http://www.w3.org/Icons/valid-xhtml-rdfa" alt="Valid XHTML + RDFa" style="border:0;width:60px;height:20px" /></a>
+				</p>		
+			</td>
+			<td style="vertical-align:middle; text-align:left; width:33%">		
+				<p>
+				    <a target="_blank" href="http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fwww.fecrt.com">
+				        <img style="border:0;width:60px;height:20px"
+				            src="http://jigsaw.w3.org/css-validator/images/vcss"
+				            alt="Valid CSS!" />
+				    </a>
+				</p>
+			</td>
+			<td style="vertical-align:middle; text-align:left; width:34%">		
+					<script type="text/javascript">
+					//<![CDATA[
+					document.write('<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.fecrt.com%2F&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=dark&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"><\/iframe>');
+					//]]>
+					</script>
+			</td>
+		</tr>
+	</table>
+
+</body>
+  
+</html>
+
