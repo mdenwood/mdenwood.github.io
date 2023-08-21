@@ -1,121 +1,476 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"> 
-
-<head>
-<meta name="google-site-verification" content="9hONQNgRDyVvEWEbXR5IDW6rsfdYuluYPHBpvFgBjzA" />	
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-
-<script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-105088919-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-	
-<title>Software tools for planning FECRT studies and analysing FECRT data</title>
-<link href="style.css" rel="stylesheet" type="text/css"/>
-
-</head>
- 
-<body style="text-align: left; ">
-	
-	<h1>Software tools for faecal egg count reduction tests</h1>
-	<p style="text-align:center">Page last updated on 11th February 2021</p>
-	
-	<h2>OVERVIEW</h2>
-	
-	<p>This website houses software tools for assessing anthelmintic efficacy based on faecal egg count reduction tests (FECRT) in animals and egg reduction rates (ERR) in humans. To read more about the statistical theory and methods that underpin these tools read the background given further down this page. To jump straight to the online calculators use the links below:</p>
-	
-	<p><a href="https://mdenwood.shinyapps.io/fecrt_bnb/"><b>ONLINE CALCULATOR FOR DATA ANALYSIS</b></a></p>
-	<!--https://ucphepi.shinyapps.io/data_analysis/-->
+<!DOCTYPE HTML>
+<!--
+	Photon by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>FECRT tools</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		
-	<p>COMING SOON: ONLINE CALCULATOR FOR PROSPECTIVE SAMPLE SIZE CALCULATION</p>
-	<!-- <p><a href="https://mdenwood.shinyapps.io/fecrt_power/"><b>ONLINE CALCULATOR FOR PROSPECTIVE SAMPLE SIZE CALCULATION</b></a></p> -->
-	<!--https://ucphepi.shinyapps.io/study_planning/-->
-	<!--https://ucphepi.shinyapps.io/typologies/-->
-		
-	<p>Please note that the page is currently in development and more background and external links will be added soon. In the meantime, any <a href="about">questions and feedback</a> are extremely welcome!</p>
+    <!-- google analytics for fecrt - GA4 -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G6SJLVCF6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-	<h2>STATISTICAL FRAMEWORK</h2>
-	
-	<p>The core principle that underpins the work shown here is that FECRT can be regarded as two separate hypothesis tests:  a one-sided non-inferioirty test of susceptibility, and a one-sided inferiority test for resistance. For the complete background see "A hypothesis testing framework for the ratio of means of two negative binomial distributions: classifying the efficacy of anthelmintic treatment against intestinal parasites": a pre-peer-reviewed version of the article is available to download from <a href="https://arxiv.org/abs/1910.06667">the arXiv database</a> (see the REFERENCES section below for citation instructions).</p>
-		
-	<h2>DATA ANALYSIS</h2>
-
-	<p>The ultimate goal of a FECRT or ERR is to be able to classify the efficacy as reflecting a population of parasites that are either susceptible or resistant to the anthelmintic compound administered. In order to do this, it is first necessary to determine two quantities: (1) the expected efficay of the anthelmintic and (2) the lower efficacy threshold. The expected efficacy should be based on the first reported efficacy values for the drug in presumed naive populations of parasites, and can typically be used from the literature. The lower efficacy threshold is based on the non-inferiority margin selected for the test of susceptibility, which reflects the lowest efficacy that is considered to be "close enough" to the expected efficacy to eliminate practical concerns about resistance. As this is somewhat difficult to define, we suggest selecting the lower efficacy threshold based on the smallest reduction in efficacy that the FECRT should have sufficient power to detect. Either way, it is important that the lower efficacy threshold be selected before the experiment is planned to ensure that a sufficient sample size is met.</p>
-	
-	<p>Once the expected efficacy and lower efficacy threshold are specified, it is then possible to determine the classification based either on 90% confidence intervals produced by a valid statistical method, or on the result of separate one-sided statistical tests for efficacy and resistance. Note that the use of 90% confidence intervals is advised because this leads to an overall type I error rate of no more than 5% for any given value of true efficacy. Due to differences in statistical methodology underling different ways of calculating confidence intervals, the precise numbers may differ between methods - however if the classification remains the same the overall result can be considered to be trustworthy. The online calculator for data analysis given above performs these calculations for a dataset provided by the user, and is pre-loaded with advised values for expected efficacy and lower efficacy threshold for common applications.</p>
-		
-	<h2>SAMPLE SIZE CALCULATION</h2>
-
-	<p>As with any prospective study, it is important that a proposed FECRT has a sample size that is likely to yield a conclusive result. This means that sample size calculations should be done to determine the necessary sample size before the study is undertaken. The online calculator for prospective sample size calculation above allows this to be done for any proposed FECRT as long as estimates for the required parameters are available for the host and parasite species in question. The calculator is pre-loaded with advised values for pre-treatment variability, post-treatment variability, within-animal correlation for common applications. The method is based on a Monte Carlo approximation of the statistical power associated with the tests for susceptibility and resistance based on sample sizes varying within the range specified by the user.</p>
-
-	<h2>UNDERLYING SOFTWARE</h2>
-
-	<p>For the R and C++ code that underlies the methods presented, see the <a href="https://github.com/ku-awdc/bayescount">GitHub repository for the bayescount package for R</a>.  Pre-compiled versions of the R package can also be installed from our Drat repository using the following R code:</p>
-	<p>install.packages('bayescount', dependencies=TRUE, repos=c(CRAN="https://cran.rstudio.com/", kuawdc="https://ku-awdc.github.io/drat/"))</p>
-	<p>If running the R package locally then a good place to start from is the vignette:</p>
-	<p>vignette("bayescount", package="bayescount")</p>
-	<p>Note that the online calculators can also be run directly from R:</p>
-	<p>bayescount::launch_shiny("data_analysis")</p>
+      gtag('config', 'G-3G6SJLVCF6');
+    </script>
+	</head>
 
 
-	<h2>REFERENCES</h2>
-	
-	<p style="font-style: italic; ">M.J. Denwood, G.T. Innocent, J.C. Prentice, L. Matthews, S.W.J. Reid, C.B. Pipper, B. Levecke, R.M. Kaplan, A.C. Kotze, J. Keiser, M. Palmeirim, and I.J. McKendrick (2019). A hypothesis testing framework for the ratio of means of two negative binomial distributions: classifying the efficacy of anthelmintic treatment against intestinal parasites.  arXiv:1910.06667 [stat.ME].  Retrieved on 2019-10-16, from the arXiv database:  https://arxiv.org/abs/1910.06667</p>
+	<body class="is-preload">
 
-	<p style="font-style: italic; ">Denwood MJ, McKendrick IJ, Matthews L, Prentice JC, Reid SWJ, Innocent GT (2017). A simple and robust statistical framework for planning, analysing and interpreting faecal egg count reduction test (FECRT) studies. In: 26th International Conference of the World Association for the Advancement of Veterinary Parasitology. URL: http://www.fecrt.com</p>
-	
-	<p>A number of further publications are currently in review and will be added here once they become available</p>
+		<!-- Header -->
+			<section id="header">
+				<div class="inner">
+					<span class="icon solid major fa-server"></span>
+					<h1><strong>Online tools for planning FECRT studies <br />and analysing FECRT data</strong></h1>
+					<p>Welcome to the fecrt.com homepage</p>
 
+					<div class="row gtr-150">
+						<div class="col-4 col-12-medium">
+							<ul class="actions special">
+								<li><a href="#plan" class="button scrolly">Plan a Study</a></li>
+							</ul>
+						</div>
+						<div class="col-4 col-12-medium">
+							<ul class="actions special">
+								<li><a href="#analyse" class="button scrolly">Analyse Data</a></li>
+							</ul>
+						</div>
+						<div class="col-4 col-12-medium">
+							<ul class="actions special">
+								<li><a href="#more" class="button scrolly">More Information</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+		</section>
 
-	<h2>FEEDBACK</h2>
-	
-	<p>This website is currently being developed, and all feedback and criticism are very welcome (<a href="about">contact details</a>).  I am particularly interested in datasets for which the analysis method gives implausible results, any errors obtained from the online tools, and enquries about collaboration regarding analysis of more compelx datasets.  I am also happy to let you know when the website is updated if you send me a request to do so!</p>
-	
-	<h2>ACKNOWLEDGEMENTS AND CITATION</h2>
-	
-	<p>The work behind these web applications has been (slowly) developed starting with <a href="http://theses.gla.ac.uk/1837/">my PhD at the University of Glasgow</a> and continuing after my move to the <a href="http://ivh.ku.dk/english/employees/?pure=en/persons/487288">University of Copenhagen</a>.  I am grateful to all the coauthors that have contributed to this work, as well as the Universities and funding bodies that have financially supported me over the years.</p>
-	<p>As a primarily academic exercise, it is very important to be able to demonstrate that this software is being used in order to be able to continue development.  If you use these tools as part of any published work, please ensure to use the appropriate citation(s) for the references given above.</p>
-	
-	<h2>LICENSE AND DISCLAIMER</h2>
-	
-	<p>The software used by this website is open source and freely available under the General Public License.  All advice contained on this website and given by the linked web applications is provided freely under the same license, and absolutely without any form of warranty or guarantee.</p>
-	
-	<table class="headertable"> 
-		<tr>
-			<td style="vertical-align:middle; text-align:left; width:33%">
-				<p about=""
-				     resource="http://www.w3.org/TR/rdfa-syntax"
-				     rel="dc:conformsTo" xmlns:dc="http://purl.org/dc/terms/">
-				    <a target="_blank" href="http://validator.w3.org/check?uri=http%3A%2F%2Fwww.fecrt.com"><img
-				      src="http://www.w3.org/Icons/valid-xhtml-rdfa" alt="Valid XHTML + RDFa" style="border:0;width:60px;height:20px" /></a>
-				</p>		
-			</td>
-			<td style="vertical-align:middle; text-align:left; width:33%">		
-				<p>
-				    <a target="_blank" href="http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fwww.fecrt.com">
-				        <img style="border:0;width:60px;height:20px"
-				            src="http://jigsaw.w3.org/css-validator/images/vcss"
-				            alt="Valid CSS!" />
-				    </a>
-				</p>
-			</td>
-			<td style="vertical-align:middle; text-align:left; width:34%">		
-					<script type="text/javascript">
-					//<![CDATA[
-					document.write('<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.fecrt.com%2F&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=dark&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"><\/iframe>');
-					//]]>
-					</script>
-			</td>
-		</tr>
-	</table>
+		<!-- Who we are -->
+			<section id="plan" class="main style1">
+				<div class="container">
+					<div class="row gtr-150">
+						<div class="col-6 col-12-medium">
+							<header class="major" >
+								<h2>Plan a FECRT Study</h2>
+							</header>
+							<p>The study planning tool allows you to determine the minimum viable sample size for a FECRT study, given a set of user-supplied parameters such as expected efficacy and the size of the grey zone. This allows some additional flexibility around the standard guidelines provided by Kaplan et al. (2023).</p>
+							<ul class="actions special">
+								<li><a href="https://mdenwood.shinyapps.io/study_planning/" class="button">Plan a Study</a></li>
+							</ul>												
+							<p>Click the link above to begin!</p>
+						</div>
+						<div class="col-6 col-12-medium">
+							<ul class="major-icons">
+								<li><span class="icon solid style6 major fa-cog"></span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
 
-</body>
-  
+		<!-- What we do -->
+			<section id="analyse" class="main style1">
+				<div class="container">
+					<div class="row gtr-150">
+						<div class="col-6 col-12-medium">
+							<ul class="major-icons">
+								<li><span class="icon solid style6 major fa-magic"></span></li>
+							</ul>
+						</div>
+						<div class="col-6 col-12-medium">
+							<header class="major">
+								<h2>Analyse FECRT Data</h2>
+							</header>
+							<p>The data analysis tool allows you to upload/enter one or more FECRT dataset to be analysed, and automatically generates the results for you based on the data uploaded. Basic results are shown on the screen, and a full report (including summary statistics) can be downloaded as a PDF or Word file.</p>
+							<ul class="actions special">
+								<li><a href="https://mdenwood.shinyapps.io/data_analysis/" class="button">Analyse Data</a></li>
+							</ul>												
+							<p>Click the link above to begin!</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Associations -->
+			<section id="more" class="main style1 special">
+				<div class="container">
+					<header class="major">
+						<h2>More Information</h2>
+					</header>          
+					<p>This website was developed by Matt Denwood at the University of Copenhagen, with input from Ray Kaplan, Martin K. Nielsen, Bruno Levecke, Stig Milan Thamsborg, and Iain McKendrick.  We acknowledge funding from NordForsk (<a href="https://www.dcs.gla.ac.uk/~jenright/digivet_website/">the DigiVet project on digitalisation of livestock data</a>) and the Scottish Government Rural and Environment Science and Analytical Services Division (RESAS) Strategic Research Programme, for support of this work.</p>
+          <p>For more information on the WAAVP guidelines see <a href="https://pubmed.ncbi.nlm.nih.gov/37121092/">Kaplan et al. (2023)</a>.  To cite this tool in peer-reviewed publications (and for more details on the underlying statistical principles) see <a href="https://pubmed.ncbi.nlm.nih.gov/36621042/">Denwood et al. (2023)</a>.</p>
+          <p>If you have comments/questions/suggestions, then please feel free to get in touch by emailing <a href="https://ivh.ku.dk/english/employees/?pure=en/persons/487288">Matt Denwood</a>.</p>
+          <p>Website last updated:  2023-08-21<br>(The tools may have been updated more recently; see under the Instructions tab)</p>
+				</div>
+			</section>
+      
+      <!-- TODO:  instructions for downloading R and running locally -->
+
+		<!-- Four -->
+		<!--
+			<section id="four" class="main style2 special">
+				<div class="container">
+					<header class="major">
+						<h2>Ipsum feugiat consequat?</h2>
+					</header>
+					<p>Sed lacus nascetur ac ante amet sapien.</p>
+					<ul class="actions special">
+						<li><a href="#" class="button wide primary">Sign Up</a></li>
+						<li><a href="#" class="button wide">Learn More</a></li>
+					</ul>
+				</div>
+			</section>
+		-->
+		<!-- Five -->
+		<!--
+			<section id="five" class="main style1">
+				<div class="container">
+					<header class="major special">
+						<h2>Elements</h2>
+					</header>
+
+					<section>
+						<h4>Text</h4>
+						<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
+						This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
+						This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
+						<hr />
+						<header>
+							<h4>Heading with a Subtitle</h4>
+							<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
+						</header>
+						<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
+						<header>
+							<h5>Heading with a Subtitle</h5>
+							<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
+						</header>
+						<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
+						<hr />
+						<h2>Heading Level 2</h2>
+						<h3>Heading Level 3</h3>
+						<h4>Heading Level 4</h4>
+						<h5>Heading Level 5</h5>
+						<h6>Heading Level 6</h6>
+						<hr />
+						<h5>Blockquote</h5>
+						<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
+						<h5>Preformatted</h5>
+						<pre><code>i = 0;
+
+while (!deck.isInOrder()) {
+print 'Iteration ' + i;
+deck.shuffle();
+i++;
+}
+
+print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
+					</section>
+
+					<section>
+						<h4>Lists</h4>
+						<div class="row">
+							<div class="col-6 col-12-medium">
+								<h5>Unordered</h5>
+								<ul>
+									<li>Dolor pulvinar etiam.</li>
+									<li>Sagittis adipiscing.</li>
+									<li>Felis enim feugiat.</li>
+								</ul>
+								<h5>Alternate</h5>
+								<ul class="alt">
+									<li>Dolor pulvinar etiam.</li>
+									<li>Sagittis adipiscing.</li>
+									<li>Felis enim feugiat.</li>
+								</ul>
+							</div>
+							<div class="col-6 col-12-medium">
+								<h5>Ordered</h5>
+								<ol>
+									<li>Dolor pulvinar etiam.</li>
+									<li>Etiam vel felis viverra.</li>
+									<li>Felis enim feugiat.</li>
+									<li>Dolor pulvinar etiam.</li>
+									<li>Etiam vel felis lorem.</li>
+									<li>Felis enim et feugiat.</li>
+								</ol>
+								<h5>Icons</h5>
+								<ul class="icons">
+									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+								</ul>
+							</div>
+						</div>
+						<h5>Actions</h5>
+						<div class="row">
+							<div class="col-6 col-12-medium">
+								<ul class="actions">
+									<li><a href="#" class="button primary">Default</a></li>
+									<li><a href="#" class="button">Default</a></li>
+								</ul>
+								<ul class="actions small">
+									<li><a href="#" class="button primary small">Small</a></li>
+									<li><a href="#" class="button small">Small</a></li>
+								</ul>
+								<ul class="actions stacked">
+									<li><a href="#" class="button primary">Default</a></li>
+									<li><a href="#" class="button">Default</a></li>
+								</ul>
+								<ul class="actions stacked">
+									<li><a href="#" class="button primary small">Small</a></li>
+									<li><a href="#" class="button small">Small</a></li>
+								</ul>
+							</div>
+							<div class="col-6 col-12-medium">
+								<ul class="actions stacked">
+									<li><a href="#" class="button primary fit">Default</a></li>
+									<li><a href="#" class="button fit">Default</a></li>
+								</ul>
+								<ul class="actions stacked">
+									<li><a href="#" class="button primary small fit">Small</a></li>
+									<li><a href="#" class="button small fit">Small</a></li>
+								</ul>
+							</div>
+						</div>
+					</section>
+
+					<section>
+						<h4>Table</h4>
+						<h5>Default</h5>
+						<div class="table-wrapper">
+							<table>
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Description</th>
+										<th>Price</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Item One</td>
+										<td>Ante turpis integer aliquet porttitor.</td>
+										<td>29.99</td>
+									</tr>
+									<tr>
+										<td>Item Two</td>
+										<td>Vis ac commodo adipiscing arcu aliquet.</td>
+										<td>19.99</td>
+									</tr>
+									<tr>
+										<td>Item Three</td>
+										<td> Morbi faucibus arcu accumsan lorem.</td>
+										<td>29.99</td>
+									</tr>
+									<tr>
+										<td>Item Four</td>
+										<td>Vitae integer tempus condimentum.</td>
+										<td>19.99</td>
+									</tr>
+									<tr>
+										<td>Item Five</td>
+										<td>Ante turpis integer aliquet porttitor.</td>
+										<td>29.99</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="2"></td>
+										<td>100.00</td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+
+						<h5>Alternate</h5>
+						<div class="table-wrapper">
+							<table class="alt">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Description</th>
+										<th>Price</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Item One</td>
+										<td>Ante turpis integer aliquet porttitor.</td>
+										<td>29.99</td>
+									</tr>
+									<tr>
+										<td>Item Two</td>
+										<td>Vis ac commodo adipiscing arcu aliquet.</td>
+										<td>19.99</td>
+									</tr>
+									<tr>
+										<td>Item Three</td>
+										<td> Morbi faucibus arcu accumsan lorem.</td>
+										<td>29.99</td>
+									</tr>
+									<tr>
+										<td>Item Four</td>
+										<td>Vitae integer tempus condimentum.</td>
+										<td>19.99</td>
+									</tr>
+									<tr>
+										<td>Item Five</td>
+										<td>Ante turpis integer aliquet porttitor.</td>
+										<td>29.99</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="2"></td>
+										<td>100.00</td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</section>
+
+					<section>
+						<h4>Buttons</h4>
+						<ul class="actions">
+							<li><a href="#" class="button primary">Primary</a></li>
+							<li><a href="#" class="button">Default</a></li>
+						</ul>
+						<ul class="actions">
+							<li><a href="#" class="button large">Large</a></li>
+							<li><a href="#" class="button">Default</a></li>
+							<li><a href="#" class="button small">Small</a></li>
+						</ul>
+						<ul class="actions fit">
+							<li><a href="#" class="button fit">Fit</a></li>
+							<li><a href="#" class="button primary fit">Fit</a></li>
+							<li><a href="#" class="button fit">Fit</a></li>
+						</ul>
+						<ul class="actions fit small">
+							<li><a href="#" class="button primary fit small">Fit + Small</a></li>
+							<li><a href="#" class="button fit small">Fit + Small</a></li>
+							<li><a href="#" class="button primary fit small">Fit + Small</a></li>
+						</ul>
+						<ul class="actions">
+							<li><a href="#" class="button primary icon solid fa-download">Icon</a></li>
+							<li><a href="#" class="button icon solid fa-download">Icon</a></li>
+						</ul>
+						<ul class="actions">
+							<li><span class="button primary disabled">Disabled</span></li>
+							<li><span class="button disabled">Disabled</span></li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Form</h4>
+						<form method="post" action="#">
+							<div class="row gtr-uniform gtr-50">
+								<div class="col-6 col-12-xsmall">
+									<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
+								</div>
+								<div class="col-6 col-12-xsmall">
+									<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
+								</div>
+								<div class="col-12">
+									<select name="demo-category" id="demo-category">
+										<option value="">- Category -</option>
+										<option value="1">Manufacturing</option>
+										<option value="1">Shipping</option>
+										<option value="1">Administration</option>
+										<option value="1">Human Resources</option>
+									</select>
+								</div>
+								<div class="col-6 col-12-small">
+									<input type="radio" id="demo-priority-low" name="demo-priority" checked>
+									<label for="demo-priority-low">Low</label>
+								</div>
+								<div class="col-6 col-12-small">
+									<input type="radio" id="demo-priority-normal" name="demo-priority">
+									<label for="demo-priority-normal">Normal</label>
+								</div>
+								<div class="col-6 col-12-small">
+									<input type="radio" id="demo-priority-high" name="demo-priority">
+									<label for="demo-priority-high">High</label>
+								</div>
+								<div class="col-6 col-12-small">
+									<input type="checkbox" id="demo-copy" name="demo-copy">
+									<label for="demo-copy">Email me a copy</label>
+								</div>
+								<div class="col-6 col-12-small">
+									<input type="checkbox" id="demo-human" name="demo-human" checked>
+									<label for="demo-human">Not a robot</label>
+								</div>
+								<div class="col-12">
+									<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+								</div>
+								<div class="col-12">
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" class="primary" /></li>
+										<li><input type="reset" value="Reset" /></li>
+									</ul>
+								</div>
+							</div>
+						</form>
+					</section>
+
+					<section>
+						<h4>Image</h4>
+						<h5>Fit</h5>
+						<div class="box alt">
+							<div class="row gtr-uniform gtr-50">
+								<div class="col-12"><span class="image fit"><img src="images/pic06.jpg" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img src="images/pic04.jpg" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img src="images/pic04.jpg" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img src="images/pic04.jpg" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
+							</div>
+						</div>
+						<h5>Left &amp; Right</h5>
+						<p><span class="image left"><img src="images/pic05.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
+						<p><span class="image right"><img src="images/pic05.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
+					</section>
+
+				</div>
+			</section>
+		-->
+
+		<!-- Footer -->
+			<section id="footer">
+        <!--
+				<ul class="icons">
+					<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+					<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+					<li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+        -->
+				<ul class="copyright">
+					<li>&copy; Matt Denwood</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</section>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
 </html>
-
